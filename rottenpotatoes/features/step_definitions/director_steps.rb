@@ -1,10 +1,11 @@
 Given(/^the following movies exist:$/) do |table|
-  # table is a Cucumber::Ast::Table
-  pending # express the regexp above with the code you wish you had
+  table.hashes.each do |movie|
+    Movie.create(:title => movie['title'], :rating => movie['rating'], :director => movie['director'], :release_date => movie['release_date'])
+  end
 end
 
-When(/^I go to the edit page for "(.*?)"$/) do |page_name,movie|
-  visit path_to(page_name)
+When(/^I go to the edit page for "(.*?)"$/) do |arg1|
+  
   
 end
 

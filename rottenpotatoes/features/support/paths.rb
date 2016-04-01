@@ -14,8 +14,13 @@ module NavigationHelpers
     case page_name
 
     when /^the home\s?page$/
-      '/'
-
+      movies_path
+      
+    when /^I go to the edit page for "(.*?)"$/
+      @movie = Movie.where(title: $1)
+      edit_movie_path(@movie)
+ 
+      end
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #
