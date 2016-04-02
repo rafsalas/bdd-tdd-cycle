@@ -16,11 +16,18 @@ module NavigationHelpers
     when /^the home\s?page$/
       movies_path
       
-    when /^I go to the edit page for "(.*?)"$/
-      @movie = Movie.where(title: $1)
+    when /^the edit page for "(.*?)"$/
+      @movie = Movie.where(title:$1).first
       edit_movie_path(@movie)
- 
-      end
+      
+    when /^the details page for "(.*?)"$/
+      @movie = Movie.where(title:$1).first
+      movie_path(@movie)  
+      
+    when /^the Similar Movies page for "(.*)"$/
+      @movie = Movie.find_by_title($1)
+      director_path(@movie)
+
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #

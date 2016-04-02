@@ -4,43 +4,41 @@ Given(/^the following movies exist:$/) do |table|
   end
 end
 
-When(/^I go to the edit page for "(.*?)"$/) do |arg1|
-  
-  
+
+When(/^fill in "(.*?)" with "(.*?)"$/) do |arg1, arg2|
+  fill_in(arg1, :with => arg2)
 end
 
-When(/^I fill in "(.*?)" with "(.*?)"$/) do |arg1, arg2|
-  pending # express the regexp above with the code you wish you had
-end
-
-When(/^I press "(.*?)"$/) do |arg1|
-  pending # express the regexp above with the code you wish you had
+When(/^press "(.*?)"$/) do |arg1|
+  click_button(arg1)
 end
 
 Then(/^the director of "(.*?)" should be "(.*?)"$/) do |arg1, arg2|
-  pending # express the regexp above with the code you wish you had
+  m = Movie.find_by_title(arg1)
+  m.director.should == arg2
+  
 end
 
-Given(/^I am on the details page for "(.*?)"$/) do |arg1|
-  pending # express the regexp above with the code you wish you had
+#Given(/^the details page for "(.*?)"$/) do |arg1|
+#  visit path_to()
+#end
+
+When(/^follow "(.*?)"$/) do |arg1|
+  click_link(arg1)
 end
 
-When(/^I follow "(.*?)"$/) do |arg1|
-  pending # express the regexp above with the code you wish you had
+Then(/^the Similar Movies page for "(.*?)"$/) do |director|
+  current_path.should == path_to(director)
 end
 
-Then(/^I should be on the Similar Movies page for "(.*?)"$/) do |arg1|
-  pending # express the regexp above with the code you wish you had
+Then(/^should see "(.*?)"$/) do |arg1|
+  page.should have_content(arg1)
 end
 
-Then(/^I should see "(.*?)"$/) do |arg1|
-  pending # express the regexp above with the code you wish you had
+Then(/^should not see "(.*?)"$/) do |arg1|
+  page.should have_no_content(arg1)
 end
 
-Then(/^I should not see "(.*?)"$/) do |arg1|
-  pending # express the regexp above with the code you wish you had
-end
-
-Then(/^I should be on the home page$/) do
-  pending # express the regexp above with the code you wish you had
+Then(/^be on the home page$/) do
+  current_path.should == movies_path
 end
