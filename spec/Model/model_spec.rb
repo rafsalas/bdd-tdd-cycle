@@ -12,7 +12,7 @@ describe Movie do
       Movie.create(title:'g',rating:'pg',director:'raf',release_date:'1987-19-2')
       Movie.create(title:'h',rating:'pg',director:'',release_date:'1987-19-2')
     end
-    it "finds similar movies" do
+    it "find similar movies" do
       @movie = Movie.where("title='a'").first
       expect(Movie.find_all_by_director(@movie.director).length).to eq(4)
     end

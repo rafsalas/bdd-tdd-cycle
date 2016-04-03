@@ -12,7 +12,7 @@ describe MoviesController, :type => :controller do
       Movie.create(title:'h',rating:'G',director:'',release_date:'1987-19-2')
   end
   describe "similar" do
-    it "finds similar movies" do
+    it "find similar movies" do
       get :director, :id => '1'
       assert_not_nil assigns(:movies)
       expect(assigns(:movies).length).to eq 4
